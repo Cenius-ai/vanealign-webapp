@@ -1,0 +1,204 @@
+
+== VaneAlign 1.0.0   demo session (throw-away data file: demo/vanealign-demo.json)
+VaneAlign 1.0.0
+
+== 1. First run: set a passphrase, then tick steps 3 and 5 from the menu
+
+$ vanealign      # first run: passphrase cenius, then 1 Align, toggle 3 and 5, b, q
+
+  No data file yet at demo/vanealign-demo.json.
+  Set a passphrase to protect your checklist, eyepieces and notes.
+  It is stored only as a salted PBKDF2 hash; there is no reset.
+  new passphrase:   confirm passphrase:   Created demo/vanealign-demo.json
+
+  VaneAlign 1.0.0   polar alignment, eyepieces and seeing notes
+  ────────────────────────────────────────────────────────────────────
+  data      demo/vanealign-demo.json
+  telescope 1200 mm   eyepieces 0   notes 0   checklist 0 of 7
+  ────────────────────────────────────────────────────────────────────
+  [1]  Align        seven-step polar alignment checklist
+  [2]  Eyepieces     magnification and true field for this telescope
+  [3]  Notes         seeing-conditions log, newest first
+  [q]  Quit
+
+  Start with Align: the checklist is what gets you on the pole.
+  choose 1-3 or q: 
+  Align ──────────────────────────────────────────────────────────────
+  0 of 7 steps done
+
+  [ ] 1.  Level the tripod and aim the mount roughly at true north
+  [ ] 2.  Set the latitude scale to your site latitude
+  [ ] 3.  Fit and focus the polar scope
+  [ ] 4.  Centre Polaris in the reticle
+  [ ] 5.  Rotate the RA axis to the correct clock position for the date and time
+  [ ] 6.  Adjust the altitude and azimuth bolts to place Polaris on the reticle mark
+  [ ] 7.  Confirm with a short drift check
+  ────────────────────────────────────────────────────────────────────
+  step 1-7 to toggle, r reset, b back, q quit:   Step 3 marked done - 1 of 7 done.
+
+  Align ──────────────────────────────────────────────────────────────
+  1 of 7 steps done
+
+  [ ] 1.  Level the tripod and aim the mount roughly at true north
+  [ ] 2.  Set the latitude scale to your site latitude
+  [x] 3.  Fit and focus the polar scope
+  [ ] 4.  Centre Polaris in the reticle
+  [ ] 5.  Rotate the RA axis to the correct clock position for the date and time
+  [ ] 6.  Adjust the altitude and azimuth bolts to place Polaris on the reticle mark
+  [ ] 7.  Confirm with a short drift check
+  ────────────────────────────────────────────────────────────────────
+  step 1-7 to toggle, r reset, b back, q quit:   Step 5 marked done - 2 of 7 done.
+
+  Align ──────────────────────────────────────────────────────────────
+  2 of 7 steps done
+
+  [ ] 1.  Level the tripod and aim the mount roughly at true north
+  [ ] 2.  Set the latitude scale to your site latitude
+  [x] 3.  Fit and focus the polar scope
+  [ ] 4.  Centre Polaris in the reticle
+  [x] 5.  Rotate the RA axis to the correct clock position for the date and time
+  [ ] 6.  Adjust the altitude and azimuth bolts to place Polaris on the reticle mark
+  [ ] 7.  Confirm with a short drift check
+  ────────────────────────────────────────────────────────────────────
+  step 1-7 to toggle, r reset, b back, q quit: 
+  VaneAlign 1.0.0   polar alignment, eyepieces and seeing notes
+  ────────────────────────────────────────────────────────────────────
+  data      demo/vanealign-demo.json
+  telescope 1200 mm   eyepieces 0   notes 0   checklist 2 of 7
+  ────────────────────────────────────────────────────────────────────
+  [1]  Align        seven-step polar alignment checklist
+  [2]  Eyepieces     magnification and true field for this telescope
+  [3]  Notes         seeing-conditions log, newest first
+  [q]  Quit
+
+  Start with Align: the checklist is what gets you on the pole.
+  choose 1-3 or q: 
+== 2. Relaunch: the ticks came back from the JSON file
+
+$ vanealign align
+
+  Align ──────────────────────────────────────────────────────────────
+  2 of 7 steps done
+
+  [ ] 1.  Level the tripod and aim the mount roughly at true north
+  [ ] 2.  Set the latitude scale to your site latitude
+  [x] 3.  Fit and focus the polar scope
+  [ ] 4.  Centre Polaris in the reticle
+  [x] 5.  Rotate the RA axis to the correct clock position for the date and time
+  [ ] 6.  Adjust the altitude and azimuth bolts to place Polaris on the reticle mark
+  [ ] 7.  Confirm with a short drift check
+  ────────────────────────────────────────────────────────────────────
+  Change it with `vanealign align toggle N`, or run `vanealign` for the menu.
+
+== 3. Eyepieces: 900 mm telescope, a 25 mm Plossl and a 9 mm Nagler
+
+$ vanealign eyepieces focal 900
+  Telescope focal length is now 900 mm.
+
+$ vanealign eyepieces add --label "25mm Plossl" --fl 25 --afov 50
+  Added eyepiece 1: 25mm Plossl (36.0x, 1.39° true field).
+
+$ vanealign eyepieces add --label "9mm Nagler" --fl 9 --afov 82
+  Added eyepiece 2: 9mm Nagler (100.0x, 0.82° true field).
+
+$ vanealign eyepieces
+
+  Eyepieces ──────────────────────────────────────────────────────────
+  telescope focal length 900 mm
+
+  no.  label                     focal    afov      mag true field
+  ---------------------------------------------------------------
+  1    25mm Plossl             25.0 mm   50.0°    36.0x      1.39°
+  2    9mm Nagler               9.0 mm   82.0°   100.0x      0.82°
+  ────────────────────────────────────────────────────────────────────
+  Add with `vanealign eyepieces add`, or run `vanealign` for the menu.
+
+== 4. Notes: M31 logged first, M42 logged second - newest observation lists first
+
+$ vanealign notes add --object M31 --date 2024-10-01 --rating 3 --body "core bright, dust lanes soft at 120x"
+  Added note for M31 on 2024-10-01 (seeing 3/5).
+
+$ vanealign notes add --object M42 --date 2024-11-02 --rating 4 --body "Trapezium split cleanly at 120x, E star suspected"
+  Added note for M42 on 2024-11-02 (seeing 4/5).
+
+$ vanealign notes
+
+  Notes ──────────────────────────────────────────────────────────────
+  1.  2024-11-02  M42  seeing 4/5
+      Trapezium split cleanly at 120x, E star suspected
+  2.  2024-10-01  M31  seeing 3/5
+      core bright, dust lanes soft at 120x
+  ────────────────────────────────────────────────────────────────────
+  Add with `vanealign notes add`, or run `vanealign` for the menu.
+
+== 5. Validation refuses bad input without writing anything
+
+$ vanealign align toggle 9
+vanealign: Step must be between 1 and 7.
+(exit status 1 - the checklist is unchanged)
+
+$ vanealign eyepieces add --label "7mm Ortho" --fl 0 --afov 45
+vanealign: Eyepiece focal length must be a number greater than 0.
+(exit status 1 - nothing was added)
+
+== 6. Reset clears the done marks and keeps the seven labels in order
+
+$ vanealign align reset
+  Checklist reset - 0 of 7 done.
+
+$ vanealign align
+
+  Align ──────────────────────────────────────────────────────────────
+  0 of 7 steps done
+
+  [ ] 1.  Level the tripod and aim the mount roughly at true north
+  [ ] 2.  Set the latitude scale to your site latitude
+  [ ] 3.  Fit and focus the polar scope
+  [ ] 4.  Centre Polaris in the reticle
+  [ ] 5.  Rotate the RA axis to the correct clock position for the date and time
+  [ ] 6.  Adjust the altitude and azimuth bolts to place Polaris on the reticle mark
+  [ ] 7.  Confirm with a short drift check
+  ────────────────────────────────────────────────────────────────────
+  Change it with `vanealign align toggle N`, or run `vanealign` for the menu.
+
+== 7. Machine-readable state for scripts
+
+$ vanealign state --json
+{
+  "data_path": "demo/vanealign-demo.json",
+  "exists": true,
+  "passphrase_set": true,
+  "telescope_focal_length_mm": 900,
+  "eyepiece_count": 2,
+  "note_count": 2,
+  "checklist_done": 0,
+  "checklist_total": 7
+}
+
+== 8. Everything lives in one human-readable JSON file
+
+$ head -n 22 demo/vanealign-demo.json
+{
+  "schema_version": 1,
+  "profile": {
+    "passphrase_salt": "f9947599236605f0b348cb50aacc74d8",
+    "passphrase_hash": "e9b61d864e22b5635885b1d7bb1f32b220c395b07276321b426bd5e1cd2597f1",
+    "iterations": 120000,
+    "created_at": "2026-11-17T23:54:05.660444+00:00"
+  },
+  "telescope": {
+    "focal_length_mm": 900
+  },
+  "checklist": [
+    {
+      "index": 1,
+      "label": "Level the tripod and aim the mount roughly at true north",
+      "completed": false
+    },
+    {
+      "index": 2,
+      "label": "Set the latitude scale to your site latitude",
+      "completed": false
+    },
+
+== Demo complete. Your own data file at ~/.vanealign/vanealign.json was not touched.
