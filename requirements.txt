@@ -1,0 +1,3 @@
+# VaneAlign ships no runtime dependencies: the tool is Python standard library
+# only. The single pin below is the test runner for `pytest`.
+pytest==9.1.1
