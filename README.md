@@ -31,7 +31,7 @@ See [`INSTALL.md`](INSTALL.md) for full setup and usage instructions.
 
 ## Architecture
 
-Open the repo and you'll find a complete Full-stack app application (27 files). Top-level layout: `demo/`, `tests/`, `vanealign.egg-info/`. `./install.sh` gets you from a fresh clone to a running instance with sample data in a single step. For environment-specific setup, see [`INSTALL.md`](INSTALL.md).
+Open the repo and you'll find a complete Full-stack app application (18 files). Top-level layout: `demo/`, `tests/`, `vanealign.egg-info/`. `./install.sh` gets you from a fresh clone to a running instance with sample data in a single step. For environment-specific setup, see [`INSTALL.md`](INSTALL.md).
 
 ## Features
 
